@@ -14,7 +14,8 @@ touch dir2/empty
 # создаём файл task/dir2/hello.sh с таким содержанием:
 # #!/bin/bash
 # echo "$1, привет!"
-nano dir2/hello.sh
+echo '#!/bin/bash
+echo "$1, привет!"' > dir2/hello.sh
 # устанавливаем для task/dir2/hello.sh права rwxrw-r--
 chmod 764 dir2/hello.sh
 # сохраняем список файлов task/dir2 в task/dir2/list.txt
@@ -23,7 +24,7 @@ ls dir2 > dir2/list.txt
 cp -r -T dir2 dir3/dir4
 # записываем в task/dir1/summary.txt список файлов с расширением *.txt
 # находящихся в task, включая поддиректории
-find . -name "*.txt" > dir1/summary.txt
+find -name "*.txt" > dir1/summary.txt
 # дописываем в task/dir1/summary.txt содержимое task/dir2/list.txt
 cat dir2/list.txt >> dir1/summary.txt 
 # определяем переменную окружения NAME со значением "Всем студентам"
@@ -37,7 +38,7 @@ mv dir1/summary.txt ./Практическоезадание
 cat Практическоезадание
 # ищем в файле "Практическое задание" строки, которые содержат слово "dir"
 # и затем отсортировываем их
-grep "dir" Практическоезадание | sort -r
+grep "dir" Практическоезадание | sort
 # меняем текущую директорию на родительскую для task
 cd ..
 # удаляем директорию task со всем содержимым
